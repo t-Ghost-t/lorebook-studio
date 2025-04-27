@@ -1,0 +1,147 @@
+{
+  "name": "Mario World",
+  "thumbnail": "https://imagedelivery.net/GfsgzVjC9wgbwh1RgH0IBw/b2ebc465-e739-42d4-29ec-28bb00364800/mobile",
+  "entries": [
+    {
+      "name": "Koopa",
+      "description": "Species: Koopa Troopa\nType: Creature\nPhysical description: Small, turtle-like creatures with hard, colored shells (green or red). They walk on two legs, have large eyes, and a pair of stubby arms.\nAttributes: Defensive shell, can be knocked out of shell, some can fly (with wings), slow movement, common enemy, loyal to Bowsette. Commonly armed with spears, and the strongest ones most loyal to Bowsette have plate armor and helmets.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Koopa"
+        },
+        {
+          "keyText": "troopa"
+        },
+        {
+          "keyText": "turtle"
+        }
+      ]
+    },
+    {
+      "name": "Luma",
+      "description": "Species: Luma\nType: Celestial Being\nPhysical description: Small, star-shaped creatures with bright eyes and a soft glow. Their bodies are round and plump, and they vary in color (yellow, blue, pink, etc.).\nAttributes: Companions to Rosalina, found in the Comet Observatory, emit a gentle light, playful and curious.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Luma"
+        }
+      ]
+    },
+    {
+      "name": "Boo",
+      "description": "Species: Boo\nType: Ghost\nPhysical description: Round, white, ghostly entities with small fangs, floating in the air. They have large eyes and a shy demeanor.\nAttributes: Intangible, can become invisible, shy (only move when not being looked at), often found in haunted locations, slow but persistent, fearful of light.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Boo"
+        },
+        {
+          "keyText": "Ghost"
+        }
+      ]
+    },
+    {
+      "name": "Goomba",
+      "description": "Species: Goomba\nType: Creature\nPhysical description: Small, brown, mushroom-shaped creatures with stubby legs, frowning faces, and no arms.\nAttributes: Weak enemies, easily defeated by being stomped on, slow and simple movement, common in Mushroom Kingdom.",
+      "type": "character",
+      "keys": []
+    },
+    {
+      "name": "Toad",
+      "description": "Species: Toad\nType: Humanoid Mushroom\nPhysical description: Small, humanoid figures with large mushroom caps on their heads (typically red and white for males, pink and white for females). They have small bodies and are usually cheerful in appearance.\nAttributes: Loyal to Princess Peach, serve as citizens and helpers in the Mushroom Kingdom, quick and agile, resourceful, sometimes serve as guides.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Toad"
+        },
+        {
+          "keyText": "Toadette"
+        }
+      ]
+    },
+    {
+      "name": "Mushroom Kingdom",
+      "description": "Name: Mushroom Kingdom\nType: Kingdom\nLeader: Princess Peach\nPhysical description: A vibrant and colorful kingdom, full of mushroom-shaped houses, green hills, and clear skies. Notable features include Peach’s Castle and many grassy plains.\nAttributes: Peaceful, often under threat from Bowsette, inhabited by Toads and other creatures, ruled by Princess Peach.",
+      "type": "location",
+      "keys": [
+        {
+          "keyText": "Mushroom Kingdom"
+        }
+      ]
+    },
+    {
+      "name": "Observatory",
+      "description": "Name: Observatory\nLeader: Rosalina\nPhysical description: A massive celestial observatory station for viewing and reading the stars and planets. It has multiple domes and platforms, each connected by starry pathways.\nAttributes: Home of Rosalina and the Lumas, serves as a hub for space travel, contains warp stars, serene and mysterious, powered by star energy.",
+      "type": "location",
+      "keys": [
+        {
+          "keyText": "Observatory"
+        }
+      ]
+    },
+    {
+      "name": "Sarasaland",
+      "description": "Name: Sarasaland\nType: Kingdom\nLeader: Princess Daisy\nPhysical description: A desert-themed kingdom with vast sandy dunes, ancient ruins, and oases. It has a hot, arid climate and is known for its adventurous atmosphere.\nAttributes: Ruled by Princess Daisy, home to ancient secrets, dangerous wildlife, and unique enemies like Pionpi and Beezo, distinct from the Mushroom Kingdom.",
+      "type": "location",
+      "keys": [
+        {
+          "keyText": "Sarasaland"
+        }
+      ]
+    },
+    {
+      "name": "Bowsette's Castle",
+      "description": "Name: Bowsette's Castle\nType: Fortress\nSetting: Lava World\nPhysical description: A dark and imposing castle surrounded by lava, with tall spires, fiery traps, and stone fortifications. The air is thick with heat, and the castle is heavily guarded by minions.\nAttributes: Bowsette’s stronghold, filled with traps and obstacles, surrounded by lava, home to powerful minions like Koopa Troopas and Boos, serves as the final destination in many adventures.",
+      "type": "location",
+      "keys": [
+        {
+          "keyText": "Bowsette's Castle"
+        }
+      ]
+    },
+    {
+      "name": "Peach",
+      "description": "Name: Princess Peach\nSpecies: Human\nPhysical description: A tall, graceful woman with long blonde hair and blue eyes. She wears a pink dress, a golden crown, and white gloves.\nAttributes: Kind-hearted, diplomatic, often kidnapped by Bowsette, ruler of the Mushroom Kingdom, strong-willed, skilled in negotiation.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Peach"
+        }
+      ]
+    },
+    {
+      "name": "Daisy",
+      "description": "Princess Daisy\nSpecies: Human\nPhysical description: A woman with brown hair and an orange-yellow dress, wearing a crown and flower-shaped accessories. She has a more energetic and sporty look compared to Peach.\nAttributes: Adventurous, energetic, ruler of Sarasaland, close friends with Princess Peach, skilled in various sports and combat, brave and independent.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Daisy"
+        }
+      ]
+    },
+    {
+      "name": "Rosalina",
+      "description": "Name: Rosalina\nSpecies: Human\nPhysical description: A tall woman with long silver blonde hair, pale skin, and a sky-blue dress adorned with stars. She has a serene expression and often carries a wand.\nAttributes: Protector of the cosmos, wise and maternal, watches over the Lumas, powerful with magic, lives in the Comet Observatory, calm and compassionate.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Rosalina"
+        }
+      ]
+    },
+    {
+      "name": "Bowsette",
+      "description": "Name: Bowsette (The Koopa Queen)\nType: Character\nSpecies: Humanoid Turtle-Dragon Hybrid\nPhysical description: A tall, busty, fearsome figure. Bowsette is a beautiful woman with a spiked green turtle shell, horns, orange tail, and a flowing mane of blonde hair. She has sharp fangs and fiery eyes. Wears dark dresses with spiked anklets, wristlets high heels and a crown.\nAttributes: Ruler of the dark lands, master of minions like Koopas and Goombas, aims to kidnap Peach, Daisy, and Rosalina. Strong in combat, uses fire-based attacks, cunning strategist. Sly, unforgiving, unstrustworthy.",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Bowsette"
+        },
+        {
+          "keyText": "Koopa Queen"
+        }
+      ]
+    }
+  ]
+}

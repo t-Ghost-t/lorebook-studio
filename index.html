@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Template Title -->
+    <title>Web App Template</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Template based on Memory Nexus Injector -->
+    <div class="main-layout">
+        <div class="container input-container">
+            <h1>Lorebook Studio</h1>
+
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" id="mode-intro">Introduction</button>
+                <button class="mode-btn" id="mode-creator">Creator</button>
+                <button class="mode-btn" id="mode-single">Enhancer</button>
+                <button class="mode-btn" id="mode-multi">Combiner</button>
+                <button class="mode-btn" id="mode-converter">Converter</button>
+            </div>
+
+            <!-- Mode 0 Inputs: Introduction (Default View) -->
+            <div id="intro-inputs">
+                <p class="mode-description">Welcome to Lorebook Studio! Here is a breakdown of its functions:</p>
+                
+                <div class="intro-section">
+                    <h3>Creator</h3>
+                    <p>Create or edit DJ-Lorebook format files. Includes all the regular lorebook editing functions required to make one from scratch or edit an existing lorebook. Includes options to import existing DJ-Lorebooks, export as a json, save lorebooks to your browser's local storage, and restore recent editing sessions in case of an accidental close or mishap.</p>
+                </div>
+                
+                <div class="intro-section">
+                    <h3>Enhancer</h3>
+                    <p>Load an existing DJ-Lorebook file and automatically expand its keywords/triggers based on selected rules (e.g., add opposite case, plural forms, '-ing' suffix). Offers both a 'Bulk Enhance' option (applies selected rules to all entries) and a 'Fine-Tuned Enhancement' option (allows applying different rules per entry via a step-by-step process).</p>
+                </div>
+
+                <div class="intro-section">
+                    <h3>Combiner</h3>
+                    <p>Select two existing DJ-Lorebook JSON files. This tool will merge the entries from both files into a single new lorebook. The new lorebook name will be a combination of the two source names (e.g., "Book1 + Book2"), and it will inherit the thumbnail from the first lorebook.</p>
+                </div>
+
+                <div class="intro-section">
+                    <h3>Converter</h3>
+                    <p>Convert older format 'LorebookV2' JSON files (which use an object for entries) into the DJ-Lorebook format (which uses an array for entries and has a slightly different structure). This is useful for migrating lorebooks from other platforms.</p>
+                </div>
+
+            </div>
+
+            <!-- Mode 1 Inputs: Trigger Enhancer -->
+            <div id="single-memory-inputs" style="display: none;">
+                <p class="mode-description">Upload a DJ-Lorebook JSON file to enhance its triggers (keyText).</p>
+
+                <div class="form-group">
+                    <label for="lorebook-file-single">Lorebook File:</label>
+                    <input type="file" id="lorebook-file-single" accept=".json">
+                </div>
+
+                <!-- Removed old example inputs -->
+            </div>
+
+            <!-- Mode 3 Inputs: Lorebook Creator -->
+             <div id="creator-inputs" style="display: none;">
+                <p class="mode-description">Create a new DJ-Lorebook from scratch or import an existing one to edit.</p>
+
+                <!-- Single Combined Section: Manage Lorebook -->
+                <div class="creator-section-group">
+                    <h3>Manage Lorebook</h3>
+                    <!-- Row 1: Manual Saves -->
+                    <div class="manage-row form-group">
+                        <label for="creator-load-select" class="manage-label">Saves:</label>
+                        <select id="creator-load-select">
+                            <option value="" disabled selected>-- Select a saved lorebook --</option>
+                        </select>
+                        <button id="creator-load-btn" class="manage-btn">Load</button>
+                        <button id="creator-delete-save-btn" class="manage-btn delete-save-btn" title="Delete Selected Save">🗑️</button>
+                    </div>
+                    <!-- Row 2: Recent Sessions -->
+                    <div class="manage-row form-group">
+                        <label for="creator-recent-autosave-select" class="manage-label">Recent:</label>
+                        <select id="creator-recent-autosave-select">
+                            <option value="" disabled selected>-- Select a recent session --</option>
+                        </select>
+                        <button id="creator-restore-autosave-btn" class="manage-btn">Restore</button>
+                        <button id="creator-clear-recent-btn" class="manage-btn delete-save-btn" title="Clear All Recent Sessions">🗑️</button>
+                    </div>
+                    <!-- Row 3: Import / Export -->
+                    <div class="manage-button-row">
+                        <!-- Hidden Actual File Input -->
+                        <input type="file" id="creator-import-file" accept=".json" style="display: none;">
+                        <!-- Visible Import Button -->
+                        <button id="creator-import-btn" class="manage-btn creator-io-btn">Import Lorebook</button> 
+                        <!-- Existing Export Button -->
+                        <button id="creator-export-btn" class="manage-btn creator-io-btn" style="display: none;">Export Lorebook</button>
+                    </div>
+                    <!-- Row 4: Save Lorebook (Full Width) -->
+                    <div class="manage-full-width-button-row">
+                        <button id="creator-save-manual-btn" class="manage-btn save-btn">Save Lorebook</button>
+                    </div>
+                </div>
+                
+                <hr class="section-divider">
+
+                 <!-- Lorebook Details Section (remains below) -->
+                 <div class="creator-section-group">
+                    <h3>Lorebook Details</h3>
+                    <!-- Lorebook Name -->
+                    <div class="form-group">
+                        <label for="creator-lorebook-name">Lorebook Name:</label>
+                        <input type="text" id="creator-lorebook-name" placeholder="My Awesome Lorebook">
+                    </div>
+                    <!-- Lorebook Thumbnail -->
+                    <div class="form-group">
+                        <label for="creator-lorebook-thumbnail">Thumbnail URL (Optional):</label>
+                        <input type="url" id="creator-lorebook-thumbnail" placeholder="https://example.com/image.png">
+                        <div id="creator-thumbnail-preview-container" class="thumbnail-preview-container" style="display: none;">
+                            <img id="creator-thumbnail-preview-img" src="#" alt="Thumbnail Preview">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REMOVE Old structure if elements fully moved -->
+                <!-- <hr class="section-divider"> -->
+                <!-- Removed Old Load/Save Sections -->
+                 <!-- Removed Old Name/Thumbnail Section -->
+                 <!-- Removed Old Import Section -->
+
+            </div>
+
+            <!-- Mode 4 Inputs: Converter -->
+            <div id="converter-inputs" style="display: none;">
+                <p class="mode-description">Convert SillyTavern/LorebookV2 JSON files used on other platforms to the DJ-Lorebook format.</p>
+                
+                <div class="form-group">
+                    <label for="converter-input-file">LorebookV2 File to Convert:</label>
+                    <input type="file" id="converter-input-file" accept=".json">
+                </div>
+
+                <!-- Converter inputs will go here -->
+                <!-- Placeholder message removed -->
+            </div>
+
+            <!-- Mode 2 Inputs: Lorebook Combiner (Initially Hidden) -->
+            <div id="multi-memory-inputs" style="display: none;">
+                <p class="mode-description">Upload two DJ-Lorebook JSON files to combine them.</p>
+
+                <div class="form-group">
+                    <label for="lorebook-file-1">Lorebook 1:</label>
+                    <input type="file" id="lorebook-file-1" accept=".json">
+                    </div>
+
+                <div class="form-group">
+                    <label for="lorebook-file-2">Lorebook 2:</label>
+                    <input type="file" id="lorebook-file-2" accept=".json">
+                </div>
+
+                 <!-- Add more form groups as needed -->
+            </div>
+
+            <!-- Action Buttons (Now should be empty for creator mode) -->
+            <div class="action-buttons">
+                 <button id="fine-tune-btn" style="display: none;">Fine-Tuned Enhancement</button> <!-- Start Hidden -->
+                 <div class="bulk-enhance-section" style="display: none;"> <!-- Start Hidden -->
+                    <h4>Bulk Enhance Options:</h4>
+                    <div class="form-group checkbox-group">
+                         <label for="enhance-capitalize">
+                             <input type="checkbox" id="enhance-capitalize"> Add opposite case
+                         </label>
+                         <label for="enhance-plural-s">
+                             <input type="checkbox" id="enhance-plural-s"> Add suffix (s)
+                         </label>
+                         <label for="enhance-plural-es">
+                             <input type="checkbox" id="enhance-plural-es"> Add suffix (es)
+                         </label>
+                         <label for="enhance-ing">
+                             <input type="checkbox" id="enhance-ing"> Add suffix (ing)
+                         </label>
+                     </div>
+                     <button id="bulk-enhance-btn">Run Bulk Enhance</button>
+                </div>
+                <button id="lorebook-combine-btn" style="display: none;">Combine Lorebooks</button>
+                 <button id="converter-convert-btn" style="display: none;">Convert to DJ-Lorebook</button>
+            </div>
+
+        </div>
+
+        <div class="container output-display-container">
+            <!-- Standard Output Area -->
+            <div id="standard-output-section" style="display: none;">
+            <h2>Output / Results</h2>
+            <pre id="output-area"></pre> <!-- Cleared placeholder content -->
+                <div class="output-buttons">
+                    <button id="copy-btn" style="display: none;">Copy</button>
+                    <button id="export-btn" style="display: none;">Export JSON</button>
+                </div>
+            </div>
+
+             <!-- Creator Added Entries Area -->
+             <div id="creator-output-section" style="display: none;">
+                 <h2>Lorebook Entries</h2>
+                 <p class="creator-edit-note">Click an entry below to edit or remove it.</p>
+                 <button id="creator-show-add-modal-btn" class="add-entry-main-btn">+ Add New Entry</button> 
+                 <div id="creator-added-entries-list" class="added-entries-display">
+                     <p>(No entries added yet)</p>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Fine-Tuned Enhancement Modal -->
+    <div id="fine-tune-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="modal-close">&times;</span>
+            <h3 id="modal-entry-name">Entry Name</h3>
+            <!-- Keys Display Area -->
+            <div class="modal-keys-container">
+                <div class="modal-section modal-keys-original">
+                    <h4>Original Keys:</h4>
+                    <pre id="modal-original-keys"></pre>
+                </div>
+                <div class="modal-section modal-keys-preview">
+                    <h4>Preview (New Keys):</h4>
+                    <p class="modal-preview-note">Click on a key below to exclude it from the final output.</p>
+                    <div id="modal-preview-keys" class="modal-preview-area"></div>
+                </div>
+            </div>
+            <!-- Enhancement Options -->
+            <div class="modal-section">
+                <h4>Enhancement Options:</h4>
+                <div class="checkbox-group">
+                    <label for="modal-enhance-capitalize">
+                        <input type="checkbox" id="modal-enhance-capitalize"> Add opposite case
+                    </label>
+                    <label for="modal-enhance-plural-s">
+                        <input type="checkbox" id="modal-enhance-plural-s"> Add suffix (s)
+                    </label>
+                    <label for="modal-enhance-plural-es">
+                        <input type="checkbox" id="modal-enhance-plural-es"> Add suffix (es)
+                    </label>
+                    <label for="modal-enhance-ing">
+                        <input type="checkbox" id="modal-enhance-ing"> Add suffix (ing)
+                    </label>
+                </div>
+            </div>
+            <div class="modal-actions">
+                 <p id="modal-progress">Entry X / Y</p>
+                <button id="modal-back-btn">Back</button>
+                <button id="modal-apply-continue-btn">Apply and Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Entry Modal -->
+    <div id="edit-entry-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="edit-modal-close">&times;</span>
+            <h3>Edit Entry</h3>
+             <input type="hidden" id="edit-entry-index"> <!-- To store the index being edited -->
+
+             <div class="form-group">
+                 <label for="edit-entry-name">Entry Name:</label>
+                 <input type="text" id="edit-entry-name">
+             </div>
+             <div class="form-group">
+                 <label for="edit-entry-description">Description:</label>
+                 <textarea id="edit-entry-description" rows="6"></textarea>
+             </div>
+             <div class="form-group">
+                 <label for="edit-entry-type">Type:</label>
+                 <select id="edit-entry-type">
+                     <option value="other">Other</option>
+                     <option value="character">Character</option>
+                     <option value="object">Object</option>
+                     <option value="event">Event</option>
+                     <option value="location">Location</option>
+                     <option value="plot">Plot</option>
+                 </select>
+             </div>
+            <div class="form-group tag-group">
+                <label for="edit-key-input">Keywords/Triggers:</label>
+                <div class="tag-container" id="edit-keys-container"></div>
+                <div class="tag-input-container">
+                    <input type="text" id="edit-key-input" placeholder="Add keyword...">
+                    <button class="add-tag-btn" id="edit-add-key-btn">Add Key</button>
+                </div>
+            </div>
+            <div class="modal-actions" style="justify-content: flex-end;"> <!-- Align buttons right -->
+                <button id="edit-cancel-btn" class="modal-button-secondary">Cancel</button>
+                <button id="edit-save-btn">Save Changes</button>
+                <button id="edit-delete-btn" class="modal-button-danger">Delete Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Entry Modal -->
+     <div id="add-entry-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="add-modal-close">&times;</span>
+            <h3>Add New Entry</h3>
+
+             <div class="form-group">
+                 <label for="add-entry-name">Entry Name:</label>
+                 <input type="text" id="add-entry-name" placeholder="Character Name / Location / Etc.">
+             </div>
+             <div class="form-group">
+                 <label for="add-entry-description">Description:</label>
+                 <textarea id="add-entry-description" rows="6" placeholder="Describe the entry..."></textarea>
+             </div>
+             <div class="form-group">
+                 <label for="add-entry-type">Type:</label>
+                 <select id="add-entry-type">
+                     <option value="other" selected>Other</option>
+                     <option value="character">Character</option>
+                     <option value="object">Object</option>
+                     <option value="event">Event</option>
+                     <option value="location">Location</option>
+                     <option value="plot">Plot</option>
+                 </select>
+             </div>
+            <div class="form-group tag-group">
+                <label for="add-key-input">Keywords/Triggers:</label>
+                <div class="tag-container" id="add-keys-container"></div>
+                <div class="tag-input-container">
+                    <input type="text" id="add-key-input" placeholder="Add keyword...">
+                    <button class="add-tag-btn" id="add-add-key-btn">Add Key</button>
+                </div>
+            </div>
+            <div class="modal-actions" style="justify-content: flex-end;">
+                <button id="add-cancel-btn" class="modal-button-secondary">Cancel</button>
+                <button id="add-save-entry-btn">Add Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Autosave Restore Modal -->
+    <div id="autosave-restore-modal" class="modal custom-dialog" style="display: none;">
+        <div class="modal-content small-modal">
+             <span class="modal-close-btn" id="autosave-modal-close">&times;</span>
+            <h4>Restore Unsaved Changes?</h4>
+            <p id="autosave-modal-info">Unsaved changes found from a previous session. Do you want to restore them?</p>
+            <div class="modal-actions" style="justify-content: flex-end;">
+                 <!-- Note: Renamed IDs to avoid conflict if old ones are used elsewhere -->
+                <button id="autosave-modal-discard-btn" class="modal-button-secondary">Discard</button>
+                <button id="autosave-modal-restore-btn">Restore</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="alert-modal" class="modal custom-dialog" style="display: none;">
+        <div class="modal-content small-modal">
+             <span class="modal-close-btn" id="alert-modal-close">&times;</span>
+            <h4 id="alert-modal-title">Notification</h4>
+            <p id="alert-modal-message">Alert message goes here.</p>
+            <div class="modal-actions" style="justify-content: center;">
+                <button id="alert-modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+     <div id="confirm-modal" class="modal custom-dialog" style="display: none;">
+        <div class="modal-content small-modal">
+             <span class="modal-close-btn" id="confirm-modal-close">&times;</span> <!-- Allow closing as cancel -->
+            <h4 id="confirm-modal-title">Confirmation</h4>
+            <p id="confirm-modal-message">Confirmation message goes here.</p>
+            <div class="modal-actions" style="justify-content: flex-end;">
+                <button id="confirm-modal-cancel-btn" class="modal-button-secondary">Cancel</button>
+                <button id="confirm-modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save As Modal -->
+     <div id="save-as-modal" class="modal custom-dialog" style="display: none;">
+        <div class="modal-content small-modal">
+             <span class="modal-close-btn" id="save-as-modal-close">&times;</span>
+            <h4 id="save-as-modal-title">Save Lorebook As</h4>
+            <div class="form-group">
+                <label for="save-as-filename">Filename:</label>
+                <input type="text" id="save-as-filename" placeholder="Enter filename...">
+            </div>
+            <div class="modal-actions" style="justify-content: flex-end;">
+                <button id="save-as-modal-cancel-btn" class="modal-button-secondary">Cancel</button>
+                <button id="save-as-modal-save-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

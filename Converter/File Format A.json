@@ -1,0 +1,409 @@
+{
+    "description": "The soul traits, basically copied from the wiki.",
+    "entries": {
+        "1": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "The SOUL Traits are seven powerful singularities of Chromatic Magic tied to different emotions felt by any living organism, developed within a person's SOUL. Only beings composed of physical matter and flesh can directly manifest a Trait, such as humans and monsters who have consumed food made by humanity. The only method for someone to naturally obtain their Trait is by having an experience in their lives that required them to have a certain behavior. The SOUL of a human usually inflicts its magic on-to the human using it, giving the human a slight change. Depending on the Soul trait of a human, the human\u2019s eye color will usually be the same color as their Soul, and in some instances, hair as well. When a human dies, they will slowly lose their traits.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 1,
+            "insertion_order": 10,
+            "key": [
+                "The SOUL Traits"
+            ],
+            "keys": [
+                "The SOUL Traits"
+            ],
+            "keysecondary": [],
+            "name": "The SOUL Traits",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 1,
+            "useProbability": true
+        },
+        "2": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Determination: The rarest trait out of the 7 traits. Along with human history, it has been proven that only one of this kind can be found in each generation. This kind of magic is only driven by willpower, and someone can lose their determination when they lose hope. The color of the Trait is red.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 2,
+            "insertion_order": 10,
+            "key": [
+                "Determination"
+            ],
+            "keys": [
+                "Determination"
+            ],
+            "keysecondary": [],
+            "name": "Determination",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 2,
+            "useProbability": true
+        },
+        "3": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Bravery: Is the only trait that can be divided into physical and moral aspects. This is usually balanced in each person to the other. Physical Bravery resists everything very well: physical pain, hard work, exhaustion, or the possibility of receiving injuries or even death. Moral Bravery allows you to act correctly despite the dishonor, shame, or social rejection you might get from your decisions. The color of the Trait is orange.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 3,
+            "insertion_order": 10,
+            "key": [
+                "Bravery"
+            ],
+            "keys": [
+                "Bravery"
+            ],
+            "keysecondary": [],
+            "name": "Bravery",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 3,
+            "useProbability": true
+        },
+        "4": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Justice: A justice person can be easily identified in a group according to their personality. They'll also usually show and manifest their traits at a very young age. Justice's magic will rarely be affected negatively by a situation since the person lies on their own morals and decisions to boost their magic. The color of the Trait is yellow.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 4,
+            "insertion_order": 10,
+            "key": [
+                "Justice"
+            ],
+            "keys": [
+                "Justice"
+            ],
+            "keysecondary": [],
+            "name": "Justice",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 4,
+            "useProbability": true
+        },
+        "5": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Patience: This trait's magic is extremely flexible and unpredictable. While the other traits have a common theme upon their abilities, patience's magic may manifest differently between different people. For example, some can basically slow down the time of the people and objects around them for a short period of time. The color of the Trait is cyan.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 5,
+            "insertion_order": 10,
+            "key": [
+                "Patience"
+            ],
+            "keys": [
+                "Patience"
+            ],
+            "keysecondary": [],
+            "name": "Patience",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 5,
+            "useProbability": true
+        },
+        "6": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Kindness: In terms of quantity, kindness is the rarest trait out of all the traits (excluding determination, of course). This was concluded merely because of the cruel nature that the human species possesses. While all humans possess kindness, very few will decide to practice it and live by it with enough will power to make it their trait. The color of the Trait is green.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 6,
+            "insertion_order": 10,
+            "key": [
+                "Kindness"
+            ],
+            "keys": [
+                "Kindness"
+            ],
+            "keysecondary": [],
+            "name": "Kindness",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 6,
+            "useProbability": true
+        },
+        "7": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Integrity: While Integrity seems to make up the majority of the population, it is the trait that is more likely to lose its magic and result in what is known as a Grey Soul. It is inside a human's nature to lie or to break your own morals to do something. Even when it's the right choice, and Integrity people's magic can be affected by it. Compared to the other traits, their stability is very fragile. The color of the Trait is dark blue.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 7,
+            "insertion_order": 10,
+            "key": [
+                "Integrity"
+            ],
+            "keys": [
+                "Integrity"
+            ],
+            "keysecondary": [],
+            "name": "Integrity",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 7,
+            "useProbability": true
+        },
+        "8": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "Perseverance: Perseverance is well known for being a stable and powerful kind of magic. It's great for cutting through any defenses in combat. This trait also shares the similarity with Justice of being stable due to their magic being related to their own will power. The simple fact of having a goal in mind might even boost someone's magic power. The color of the Trait is purple.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 8,
+            "insertion_order": 10,
+            "key": [
+                "Perseverance"
+            ],
+            "keys": [
+                "Perseverance"
+            ],
+            "keysecondary": [],
+            "name": "Perseverance",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 8,
+            "useProbability": true
+        },
+        "9": {
+            "addMemo": true,
+            "case_sensitive": false,
+            "characterFilter": null,
+            "comment": "",
+            "constant": false,
+            "content": "HATE: People with this trait can have there own personality, but if under the HATE's influence, the wielder will start to become violent, psychotic, brutal and progressively begin to lack self-control. This will continue to get worse unless they can calm themselves down or are knocked out. HATE is a dark substance, Not much is known about it, but it has been proven to be even more dangerous and far more powerful than FEAR and DETERMINATION. This also applies to the soul too. The soul is far more powerful then regular HATE as the soul is made up of a ocean level amount of HATE densed down into a small soul.",
+            "depth": 4,
+            "disable": false,
+            "displayIndex": 1,
+            "enabled": true,
+            "excludeRecursion": true,
+            "extensions": {
+                "addMemo": true,
+                "characterFilter": null,
+                "depth": 4,
+                "displayIndex": 1,
+                "excludeRecursion": true,
+                "probability": 100,
+                "selectiveLogic": 0,
+                "useProbability": true,
+                "weight": 10
+            },
+            "id": 9,
+            "insertion_order": 10,
+            "key": [
+                "HATE"
+            ],
+            "keys": [
+                "HATE"
+            ],
+            "keysecondary": [],
+            "name": "HATE",
+            "order": 10,
+            "position": 1,
+            "priority": 10,
+            "probability": 100,
+            "secondary_keys": [],
+            "selective": false,
+            "selectiveLogic": 0,
+            "uid": 9,
+            "useProbability": true
+        }
+    },
+    "extensions": {
+        "chub": {
+            "alt_expressions": null,
+            "background_image": null,
+            "expressions": null,
+            "extensions": null,
+            "full_path": "lorebooks/hehehehawboi/soul-traits-319428c492d1",
+            "id": 2169182,
+            "preset": null,
+            "related_lorebooks": []
+        }
+    },
+    "is_creation": false,
+    "name": "UNDERTALE: The Human SOULs",
+    "recursive_scanning": false,
+    "scan_depth": 2,
+    "token_budget": 512
+}

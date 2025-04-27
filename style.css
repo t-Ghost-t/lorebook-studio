@@ -1,0 +1,1471 @@
+:root {
+    /* Light Mode Vars (Default) */
+    --bg-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --label-color: #5f6368;
+    --input-border: #dadce0;
+    --input-bg: #ffffff;
+    --input-focus-border: #1a73e8;
+    --input-focus-shadow: rgba(26, 115, 232, 0.2);
+    --placeholder-color: #a0a0a0;
+    --tag-bg: #e8f0fe;
+    --tag-text: #1a73e8;
+    --tag-remove-bg: #1a73e8;
+    --tag-remove-hover-bg: #d32f2f;
+    --tag-container-bg: #f8f9fa;
+    --button-bg: #1a73e8;
+    --button-text: #ffffff;
+    --button-hover-bg: #1558b0;
+    --copy-button-bg: #34a853;
+    --copy-button-hover-bg: #1e8e3e;
+    --output-bg: #f8f9fa;
+    --output-border: #dadce0;
+    --output-text: #3c4043;
+    --h1-color: #1a73e8;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #202124;
+        --container-bg: #2d2e30;
+        --text-color: #e8eaed;
+        --label-color: #bdc1c6;
+        --input-border: #5f6368;
+        --input-bg: #3c4043;
+        --input-focus-border: #8ab4f8;
+        --input-focus-shadow: rgba(138, 180, 248, 0.3);
+        --placeholder-color: #9aa0a6;
+        --tag-bg: #3c4043;
+        --tag-text: #8ab4f8;
+        --tag-remove-bg: #8ab4f8;
+        --tag-remove-hover-bg: #f28b82; /* Lighter red for dark */
+        --tag-container-bg: #35363a; /* Slightly different dark shade */
+        --button-bg: #8ab4f8;
+        --button-text: #202124;
+        --button-hover-bg: #aecbfa;
+        --copy-button-bg: #81c995; /* Lighter green for dark */
+        --copy-button-hover-bg: #a5d6a7;
+        --output-bg: #28292c; /* Slightly different dark shade */
+        --output-border: #5f6368;
+        --output-text: #e8eaed;
+        --h1-color: #8ab4f8;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    margin: 0;
+    padding: 15px; /* Reduced padding */
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Stretch children vertically */
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    width: 100%;
+    max-width: 1300px; /* Max width for the two columns */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 25px 30px; /* Adjusted padding */
+    border-radius: 12px; /* Slightly smaller radius */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.input-container {
+    flex-basis: 50%;
+    overflow-x: hidden; /* Prevent content from stretching container */
+}
+
+.output-display-container {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent content from stretching container */
+}
+
+h1 {
+    color: var(--h1-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.6rem; /* Adjusted size */
+}
+
+.form-group {
+    margin-bottom: 18px; /* Tighter spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px; /* Tighter spacing */
+    font-weight: 500;
+    color: var(--label-color);
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="url"],
+select {
+    width: 100%;
+    padding: 10px 12px; /* Adjusted padding */
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 6px; /* Slightly smaller radius */
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: var(--placeholder-color);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px var(--input-focus-shadow);
+}
+
+/* Tag Input specific styles */
+.tag-input-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tag-input-container input[type="text"] {
+    flex-grow: 1;
+}
+
+.add-tag-btn {
+    padding: 8px 15px; /* Adjusted padding */
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.add-tag-btn:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-tag-btn:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    background-color: var(--tag-container-bg);
+    border-radius: 6px;
+    min-height: 38px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    word-break: break-word; /* Allow long words/tags to break */
+    cursor: default;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    max-width: 100%; /* Prevent tag from exceeding container width */
+}
+
+.tag:hover {
+    transform: translateY(-1px); /* Subtle lift on hover */
+}
+
+.tag .remove-tag {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--tag-remove-bg);
+    color: var(--button-text); /* Match add button text color */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tag .remove-tag:hover {
+    background-color: var(--tag-remove-hover-bg);
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* Main Generate Button */
+#generate-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 25px; /* Adjusted padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease, transform 0.1s ease;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#generate-btn:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0 3px 6px var(--shadow-color);
+    transform: translateY(-1px);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+/* Output Area */
+.output-display-container h2 {
+    color: var(--label-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#output-area {
+    background-color: var(--output-bg);
+    border: 1px solid var(--output-border);
+    padding: 15px;
+    border-radius: 6px;
+    white-space: pre-wrap; /* Wrap long lines but preserve whitespace */
+    word-wrap: break-word;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--output-text);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    flex-grow: 1; /* Allow it to fill available space */
+    min-height: 150px; /* Ensure a minimum height */
+    max-height: 45em; /* Limit height to ~30 lines */
+    overflow-y: auto; /* Add vertical scrollbar when needed */
+}
+
+/* Styling for the div containing output action buttons */
+.output-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px; /* Space above the buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Shared styles for output buttons */
+.output-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.output-buttons button:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.output-buttons button:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+/* Specific styles for copy button */
+#copy-btn {
+    background-color: var(--copy-button-bg);
+    color: var(--button-text);
+}
+
+#copy-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+}
+
+/* Specific styles for export button */
+#export-btn {
+    background-color: var(--button-bg); /* Use standard button color */
+    color: var(--button-text);
+}
+
+#export-btn:hover {
+     background-color: var(--button-hover-bg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .output-display-container {
+       min-height: 200px; /* Keep a minimum height */
+    }
+}
+
+/* History Section */
+.history-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--input-border);
+}
+
+.history-container h2 {
+    color: var(--label-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px; /* Limit height and allow scroll */
+    overflow-y: auto;
+    /* Custom scrollbar styling (optional, for aesthetics) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--label-color) var(--container-bg);
+}
+
+#history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-list::-webkit-scrollbar-track {
+    background: var(--container-bg);
+    border-radius: 4px;
+}
+
+#history-list::-webkit-scrollbar-thumb {
+    background-color: var(--label-color);
+    border-radius: 4px;
+    border: 2px solid var(--container-bg); /* Creates padding around thumb */
+}
+
+.history-item {
+    background-color: var(--tag-container-bg); /* Use similar bg as tag container */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.history-item:hover {
+    background-color: var(--bg-color); /* Slightly change bg on hover */
+}
+
+.history-item span {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default; /* Indicate text isn't clickable */
+}
+
+.history-item-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.history-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.load-btn {
+    background-color: var(--copy-button-bg); /* Green */
+    color: var(--button-text);
+}
+
+.load-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: var(--tag-remove-hover-bg); /* Red */
+    color: var(--button-text);
+}
+
+.delete-btn:hover {
+    background-color: #c62828; /* Darker red */
+    transform: scale(1.05);
+}
+
+/* Mode Selector */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    overflow: hidden; /* To contain border-radius */
+}
+
+.mode-btn {
+    flex-grow: 1;
+    padding: 10px 15px;
+    background-color: transparent; /* Button background */
+    color: var(--label-color); /* Button text color */
+    border: none;
+   /* border-right: 1px solid var(--input-border); Remove internal border */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+}
+
+.mode-btn:last-child {
+    border-right: none;
+}
+
+.mode-btn.active {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.mode-btn:not(.active):hover {
+     background-color: var(--tag-container-bg);
+}
+
+.mode-description {
+    font-size: 0.85rem;
+    color: var(--label-color);
+    margin-top: -10px; /* Pull up slightly */
+    margin-bottom: 15px;
+    text-align: center;
+    font-style: italic;
+}
+
+.history-note {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--placeholder-color);
+}
+
+/* Styling for Checkbox Groups */
+.checkbox-group {
+    display: flex;
+    flex-direction: column; /* Stack checkboxes vertically */
+    gap: 8px; /* Space between checkboxes */
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    background-color: var(--tag-container-bg); /* Use similar background */
+    border-radius: 6px;
+}
+
+.checkbox-group label {
+    display: flex; /* Align checkbox and text */
+    align-items: center;
+    gap: 8px; /* Space between checkbox and text */
+    font-weight: normal; /* Override default label weight */
+    color: var(--text-color); /* Use standard text color */
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin: 0; /* Remove default margins */
+    width: 16px; /* Standard size */
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Styling for Action Buttons Container */
+.action-buttons {
+    margin-top: 20px; /* Space above buttons */
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+}
+
+.action-buttons button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 25px; /* Match old generate button padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease, transform 0.1s ease;
+    width: 100%; /* Make buttons full width */
+}
+
+.action-buttons button:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0 3px 6px var(--shadow-color);
+    transform: translateY(-1px);
+}
+
+.action-buttons button:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+/* Optional: slightly different style for secondary action? */
+#fine-tune-btn {
+    /* Example: Use a slightly different color or style if desired */
+    /* background-color: var(--copy-button-bg); */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: var(--container-bg);
+    margin: 5% auto; /* Adjust margin for potentially taller modal */
+    padding: 25px 30px;
+    border: 1px solid var(--input-border);
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Maximum width */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between sections */
+}
+
+.modal-close-btn {
+    color: var(--label-color);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.modal-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--label-color);
+    font-weight: 500;
+}
+
+/* Container for keys sections */
+.modal-keys-container {
+    display: flex;
+    gap: 20px; /* Space between original and preview */
+    width: 100%;
+}
+
+.modal-keys-original,
+.modal-keys-preview {
+    flex: 1; /* Each takes half the space */
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevent flex items from overflowing */
+}
+
+#modal-original-keys {
+    background-color: var(--output-bg);
+    border: 1px solid var(--output-border);
+    padding: 10px;
+    border-radius: 6px;
+    height: 200px; /* Fixed height for alignment */
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: var(--output-text);
+    flex-grow: 1; /* Allow it to fill space within flex column */
+}
+
+/* Styles for the preview area */
+.modal-preview-area {
+    background-color: var(--output-bg);
+    border: 1px solid var(--output-border);
+    padding: 10px;
+    border-radius: 6px;
+    height: 200px; /* Fixed height for alignment */
+    overflow-y: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: var(--output-text);
+    flex-grow: 1; /* Allow it to fill space within flex column */
+    display: flex; /* Use flexbox for tags */
+    flex-wrap: wrap; /* Allow tags to wrap */
+    gap: 5px; /* Space between preview tags */
+    align-content: flex-start; /* Align wrapped lines to the top */
+}
+
+/* Note for preview section */
+.modal-preview-note {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--label-color);
+    margin-top: -8px; /* Pull up slightly */
+    margin-bottom: 8px;
+}
+
+.preview-key {
+    display: inline-flex; /* Use flex for alignment with remove button */
+    align-items: center;
+    gap: 5px;
+    background-color: #d0f0c0; /* Pastel green */
+    color: #204e10; /* Darker green text for contrast */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap; /* Keep multi-word keys on one line if possible */
+    cursor: pointer; /* Indicate it's clickable */
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Style for the 'remove' indicator (an x) */
+.preview-key::after {
+    content: '\00d7'; /* Multiplication sign (X) */
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #8b0000; /* Dark red */
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    margin-left: 3px; /* Space it slightly */
+    line-height: 1;
+}
+
+.preview-key:hover::after {
+    opacity: 1;
+}
+
+/* Style for a key marked as excluded */
+.preview-key.excluded {
+    background-color: #f0e0e0; /* Light pink/grey */
+    color: #888;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.preview-key.excluded::after {
+    content: '+'; /* Change to plus sign to indicate 're-add' */
+    color: #006400; /* Dark green */
+    opacity: 0.8;
+}
+
+/* Dark mode adjustment for preview key */
+@media (prefers-color-scheme: dark) {
+    .preview-key {
+        background-color: #2a4a2a; /* Darker pastel green */
+        color: #b0e0b0; /* Lighter green text */
+    }
+    .preview-key::after {
+        color: #f4a5a0; /* Lighter red */
+    }
+    .preview-key.excluded {
+        background-color: #4a3a3a; /* Darker pink/grey */
+        color: #aaa;
+    }
+     .preview-key.excluded::after {
+        color: #90ee90; /* Lighter green */
+    }
+}
+
+.modal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between; /* Space out progress and buttons */
+    align-items: center;
+}
+
+.modal-actions p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--label-color);
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#modal-back-btn {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+#modal-back-btn:hover {
+    background-color: var(--bg-color);
+}
+
+#modal-apply-continue-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+#modal-apply-continue-btn:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Bulk Enhance Section Styling */
+.bulk-enhance-section {
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px; /* Space below fine-tune button */
+    background-color: var(--tag-container-bg); /* Subtle background difference */
+}
+
+.bulk-enhance-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--label-color);
+    font-size: 0.95rem;
+}
+
+.bulk-enhance-section .checkbox-group {
+    margin-bottom: 15px; /* Space between checkboxes and button */
+    padding: 0; /* Remove extra padding */
+    border: none; /* Remove double border */
+    background-color: transparent; /* Remove double background */
+}
+
+.bulk-enhance-section button {
+    /* Inherits from .action-buttons button, no specific style needed unless desired */
+     width: 100%; /* Ensure button is full width */
+}
+
+/* Optional: slightly different style for secondary action? */
+#fine-tune-btn {
+    /* Example: Use a slightly different color or style if desired */
+    /* background-color: var(--copy-button-bg); */
+}
+
+/* Divider style */
+hr.section-divider {
+    border: none;
+    border-top: 1px solid var(--input-border);
+    margin: 25px 0;
+}
+
+/* Entry editor specific button */
+#creator-add-entry-btn {
+    background-color: var(--copy-button-bg); /* Green */
+    color: var(--button-text);
+    /* Inherits padding etc. from .action-buttons button if applicable, or define here */
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    margin-top: 5px; /* Adjust spacing */
+    width: 100%;
+    font-weight: 500;
+}
+
+#creator-add-entry-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+}
+
+/* Style for Textarea */
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    font-family: inherit; /* Match other inputs */
+    line-height: 1.4;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+    resize: vertical; /* Allow vertical resize */
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px var(--input-focus-shadow);
+}
+
+textarea::placeholder {
+    color: var(--placeholder-color);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Added Entries Display */
+.added-entries-display {
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 15px;
+    min-height: 100px; /* Still useful for very short content */
+    height: 600px; /* Fixed height */
+    overflow-y: auto; /* Add scrollbar if content overflows */
+    background-color: var(--tag-container-bg);
+}
+
+.added-entries-display p {
+    font-style: italic;
+    color: var(--label-color);
+    margin: 0;
+}
+
+.added-entry-item {
+    background-color: var(--container-bg);
+    padding: 0; /* Remove padding from main item */
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    display: flex;
+    flex-direction: column; /* Stack header and preview */
+    /* Removed old flex properties like justify-content, align-items */
+    /* cursor: pointer; */ /* Removed cursor from main item */
+    transition: background-color 0.2s ease;
+}
+
+/* Don't highlight whole item on hover now */
+/*.added-entry-item:hover {
+    background-color: var(--bg-color);
+}*/
+
+.entry-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px; /* Add padding here */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.entry-item-header:hover {
+    background-color: var(--bg-color); /* Highlight header on hover */
+}
+
+.entry-item-header > div { /* Wrapper for name/type */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden; /* Prevent long names overflowing */
+}
+
+.entry-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entry-type {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--label-color);
+    flex-shrink: 0;
+}
+
+.entry-toggle-arrow {
+    font-size: 0.8rem;
+    color: var(--label-color);
+    padding: 0 5px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.added-entry-item.expanded .entry-toggle-arrow {
+     transform: rotate(180deg);
+}
+
+.entry-item-preview {
+    padding: 10px 15px;
+    border-top: 1px solid var(--input-border);
+    background-color: var(--tag-container-bg); /* Slightly different bg */
+    display: none; /* Hidden by default, JS toggles */
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+.preview-description {
+    font-size: 0.85rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    white-space: pre-wrap; /* Respect newlines in description */
+    word-wrap: break-word;
+    max-height: 200px; /* Increased from 100px */
+    overflow-y: auto;
+    background-color: var(--output-bg); /* Add distinct background */
+    padding: 8px; /* Add some padding */
+    border-radius: 4px; /* Optional: slightly round corners */
+    border: 1px solid var(--input-border); /* Add subtle border */
+}
+
+.preview-keys {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: var(--output-bg); /* Add distinct background */
+    padding: 8px; /* Add some padding */
+    border-radius: 4px; /* Optional: slightly round corners */
+    border: 1px solid var(--input-border); /* Add subtle border */
+    min-height: 30px; /* Ensure some height even if no keys */
+}
+
+.preview-key-tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.edit-entry-preview-btn {
+    /* Style like a small secondary button */
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 5px; /* Space above button */
+    float: right; /* Align to right */
+}
+
+.edit-entry-preview-btn:hover {
+    background-color: var(--bg-color);
+}
+
+/* Secondary button style for modal */
+.modal-button-secondary {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+.modal-button-secondary:hover {
+    background-color: var(--bg-color);
+}
+
+/* Danger button style for modal */
+.modal-button-danger {
+    background-color: var(--tag-remove-hover-bg); /* Red */
+    color: var(--button-text);
+    border: none;
+}
+
+.modal-button-danger:hover {
+    background-color: #c62828; /* Darker red */
+}
+
+/* Example: Button to remove added entry (implement in JS later if needed) */
+/*.remove-added-entry-btn {
+    background: none;
+    border: none;
+    color: var(--tag-remove-hover-bg);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+}*/
+
+/* Button to trigger Add Entry Modal */
+.add-entry-main-btn {
+    display: block; /* Full width */
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px; /* Space below button */
+    background-color: var(--copy-button-bg); /* Use green like old add button */
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.add-entry-main-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+    transform: translateY(-1px);
+}
+
+.added-entry-item {
+    background-color: var(--container-bg);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer; /* Make item clickable */
+    transition: background-color 0.2s ease;
+}
+
+.added-entry-item:hover {
+    background-color: var(--bg-color); /* Highlight on hover */
+}
+
+.added-entry-item span {
+    font-weight: 500;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.added-entry-item .entry-type {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--label-color);
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+/* Note for creator edit section */
+.creator-edit-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--label-color);
+    margin-top: -8px; /* Pull up slightly */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Secondary button style for modal */
+.modal-button-secondary {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+.modal-button-secondary:hover {
+    background-color: var(--bg-color);
+}
+
+/* Danger button style for modal */
+.modal-button-danger {
+    background-color: var(--tag-remove-hover-bg); /* Red */
+    color: var(--button-text);
+    border: none;
+}
+
+.modal-button-danger:hover {
+    background-color: #c62828; /* Darker red */
+}
+
+/* Example: Button to remove added entry (implement in JS later if needed) */
+/*.remove-added-entry-btn {
+    background: none;
+    border: none;
+    color: var(--tag-remove-hover-bg);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+}*/
+
+/* Style for secondary action button */
+.action-button.secondary-action {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+
+.action-button.secondary-action:hover {
+    background-color: var(--bg-color);
+}
+
+/* NEW Styles for manage rows */
+.manage-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.manage-label {
+    flex-shrink: 0;
+    width: 60px; /* Adjust as needed */
+    text-align: right;
+    font-weight: 500;
+    color: var(--label-color);
+    font-size: 0.9rem;
+}
+
+.manage-row select {
+    flex-grow: 1; /* Let dropdown take available space */
+    flex-basis: 0; /* Ensure dropdowns grow from the same base width */
+    min-width: 150px; /* Prevent dropdown becoming too small */
+    width: 100%; /* Force select to take full allocated width */
+}
+
+.manage-btn {
+    padding: 8px 15px;
+    min-width: 70px; /* Ensure Load/Restore buttons have same min width */
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    white-space: nowrap; /* Keep text on one line */
+}
+
+.manage-btn:hover {
+     background-color: var(--button-hover-bg);
+}
+
+/* Specific overrides for save/delete buttons */
+.manage-btn.save-btn {
+    background-color: var(--copy-button-bg) !important; 
+}
+.manage-btn.save-btn:hover {
+     background-color: var(--copy-button-hover-bg) !important; 
+}
+.manage-btn.delete-save-btn {
+    background-color: var(--tag-remove-hover-bg) !important; 
+    padding: 8px 10px !important;
+    font-size: 1.1rem !important; /* Keep emoji size consistent */
+    line-height: 1;
+}
+.manage-btn.delete-save-btn:hover {
+     background-color: #c62828 !important;
+}
+
+/* Row for Import/Export buttons */
+.manage-button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px; /* Space above button row */
+    justify-content: flex-start; /* Or center/flex-end */
+    align-items: baseline; /* Align items based on their text baseline */
+}
+
+.manage-button-row .manage-btn {
+    /* flex-grow: 1; /* Let import/export buttons share width */
+    flex-basis: calc(50% - 5px); /* 50% minus half the gap */
+    text-align: center; /* Ensure text is centered if it wraps (unlikely) */
+}
+
+/* Row for the full-width Save button */
+.manage-full-width-button-row {
+    margin-top: 10px; /* Space above the save button */
+}
+
+.manage-full-width-button-row #creator-save-manual-btn {
+    width: 100%; /* Make button full width of its container */
+    justify-content: center; /* Center text if it becomes flex */
+}
+
+/* Intro Tab Styling */
+#intro-inputs h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--h1-color);
+}
+
+.intro-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.intro-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.intro-section h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--h1-color);
+}
+
+.intro-section p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Thumbnail Preview */
+.thumbnail-preview-container {
+    width: 128px;
+    height: 128px;
+    border: 1px solid var(--input-border);
+    background-color: var(--tag-container-bg); /* Placeholder background */
+    margin-top: 10px;
+    border-radius: 4px;
+    overflow: hidden; /* Ensure image stays within bounds */
+    display: flex; /* Center image potentially */
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail-preview-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%; /* Force image element to fill container width */
+    height: 100%; /* Force image element to fill container height */
+    object-fit: cover; /* Crop to fill */
+}
+
+/* Style for secondary action button */
+.action-button.secondary-action {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+
+.action-button.secondary-action:hover {
+    background-color: var(--bg-color);
+}
+
+/* Custom Dialog Modal Styles */
+.custom-dialog .modal-content {
+     max-width: 450px; /* Make alerts/confirms smaller */
+     margin-top: 15%; /* Position slightly higher */
+}
+
+.custom-dialog h4 { /* Title */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: var(--h1-color);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.custom-dialog p { /* Message */
+     margin-top: 0;
+     margin-bottom: 20px;
+     line-height: 1.5;
+     text-align: center;
+     font-size: 0.95rem;
+}
+
+.custom-dialog .modal-actions button {
+     min-width: 80px; /* Ensure buttons have some width */
+     padding: 8px 20px;
+}
+
+.modal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between; /* Space out progress and buttons */
+    align-items: center;
+}
+
+.modal-actions p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--label-color);
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#modal-back-btn {
+    background-color: var(--tag-container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+#modal-back-btn:hover {
+    background-color: var(--bg-color);
+}
+
+#modal-apply-continue-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+#modal-apply-continue-btn:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Drag Handle Style */
+.drag-handle {
+    cursor: grab;
+    padding: 0 8px 0 0; /* Space to the right */
+    color: var(--label-color);
+    font-size: 1.1rem; /* Make icon slightly larger */
+    line-height: 1; /* Align vertically */
+}
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Style for the item being dragged */
+.added-entry-item.dragging {
+    opacity: 0.5;
+    border: 1px dashed var(--input-focus-border);
+    background-color: var(--bg-color);
+}
+
+.entry-item-header > div { /* Wrapper for name/type */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden; /* Prevent long names overflowing */
+}
+
+/* Style for the drop indicator line ABOVE */
+.added-entry-item.drag-over-indicator-above {
+    position: relative; /* Needed for pseudo-element positioning */
+}
+
+.added-entry-item.drag-over-indicator-above::before {
+    content: '';
+    position: absolute;
+    top: -4px; /* Position above the item, adjust as needed */
+    left: 0;
+    right: 0;
+    height: 3px; /* Line thickness */
+    background-color: var(--input-focus-border); /* Use focus color for visibility */
+    border-radius: 1px;
+    z-index: 1; /* Ensure it's visible */
+}
+
+/* Style for the drop indicator line BELOW */
+.added-entry-item.drag-over-indicator-below {
+     position: relative; /* Needed for pseudo-element positioning */
+}
+
+.added-entry-item.drag-over-indicator-below::after { /* Use ::after */
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Position BELOW the item */
+    left: 0;
+    right: 0;
+    height: 3px; /* Line thickness */
+    background-color: var(--input-focus-border); /* Use focus color for visibility */
+    border-radius: 1px;
+    z-index: 1; /* Ensure it's visible */
+}
+
+/* Creator Tab Section Grouping */
+.creator-section-group {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    /* border-bottom: 1px solid var(--input-border); No border needed if using hr */
+}
+
+.creator-section-group h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--h1-color); /* Use primary heading color */
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.creator-section-group #creator-export-btn {
+    /* Style the moved export button */
+    width: auto; /* Don't force full width */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Inherits base button colors/transition */
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 5px; /* Space from import input */
+}
+
+.creator-section-group #creator-export-btn:hover {
+     background-color: var(--button-hover-bg);
+} 

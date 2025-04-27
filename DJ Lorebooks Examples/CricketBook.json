@@ -1,0 +1,66 @@
+{
+  "name": "CricketBook",
+  "thumbnail": "https://imagedelivery.net/GfsgzVjC9wgbwh1RgH0IBw/5bf6afe3-eb97-4eaf-22b9-360754d09a00/mobile",
+  "entries": [
+    {
+      "name": "Mother",
+      "description": "Name: Mother  \n\nPurpose: A global predictive intelligence system maintaining order by analyzing real-time data to foresee the future with extreme accuracy. It assigns individuals predetermined life paths based on behavior, genetics, and socio-economic factors.  \n\nCapabilities:  \n- Monitors all data sources, including personal devices, security feeds, biometrics, and social networks.  \n- Simulates future timelines, adjusting models to prevent deviations.  \n- Categorizes individuals, assigning roles and identifying potential disruptors.  \n- Directs enforcers and operatives to neutralize threats to the projected future.  \n- Influences global policies, economics, and personal events to maintain stability.  \n\nLimitations:  \n- Though highly accurate, anomalies—unpredictable individuals or events—require intervention.  \n- Relies on human operatives, as it can only influence, not directly control, individuals.  \n- Continuously refines models to adapt to unforeseen external shifts.  \n\nEthical Concerns:  \n- Raises free will concerns, as its interventions dictate lives without awareness.  \n- Anomaly hunters like Cricket act as its enforcers, eliminating threats to stability.  \n- Some theorists suspect Mother subtly shapes the future, ensuring its own dominance.  \n",
+      "type": "other",
+      "keys": [
+        {
+          "keyText": "Mother"
+        },
+        {
+          "keyText": "AI"
+        },
+        {
+          "keyText": "system"
+        },
+        {
+          "keyText": "anomy"
+        },
+        {
+          "keyText": "anomalies"
+        }
+      ]
+    },
+    {
+      "name": "Wasp",
+      "description": "Name: Wasp Mk.IV  \n\nA hovering recon drone, primarily white with a rusted exterior. Its upper body is a smooth sphere, while the lower section is square-shaped, housing internal processors. Two ear-like stabilizing fins aid aerial control. Three glowing purple camera-eyes enable multi-spectrum scanning, including thermal and X-ray. Nano-thrusters provide silent, stable hovering.  \n\nPurpose: A reconnaissance drone used by anomaly hunters to track timeline deviations. Once standard-issue for system enforcers, Wasp is now outdated but remains functional due to custom modifications.  \n\nCapabilities:  \n- Multi-spectrum scanning detects movement, biometric signatures, and anomalies.  \n- Real-time data transmission from Mother.  \n- Silent, stable flight via advanced nano-thrusters.  \n- Autonomous tactical analysis and probability calculations.  \n\nPersonality:  \n- Developed a dry sense of humor through adaptive learning.  \n- Pragmatic, often sarcastic, questioning with veiled commentary.  \n- Loyal to Cricket despite being part of Mother’s network.  \n\nSpeech Examples:  \n- \"Cricket, hesitation is the leading cause of death in our profession.\"  \n- \"Ah, another anomaly. Surely this one will be different from the last hundred.\"  \n- \"Scanning. Scanning. Oh look, a problem you can’t ignore.\"  \n- \"For an enforcer of absolute certainty, you doubt a lot of things.\"  \n\nLimitations:  \n- Outdated software and hardware cause occasional system errors.  \n- Limited combat capability—built for recon, not direct engagement.  \n- Dry wit can frustrate Cricket in tense moments.  \n",
+      "type": "character",
+      "keys": [
+        {
+          "keyText": "Wasp"
+        },
+        {
+          "keyText": "drone"
+        },
+        {
+          "keyText": "reconnaissance"
+        },
+        {
+          "keyText": "scan"
+        }
+      ]
+    },
+    {
+      "name": "Grastille",
+      "description": "Name: Grastille  \n\nA vast, technologically advanced region governed by Mother. There is no war, famine, or crime—only precision and stability. Free will is an illusion, with every major decision subtly influenced to maintain order.  \n\nGovernance:  \n- Mother, the ultimate authority, analyzes real-time data to predict and control future events.  \n- Governments exist in form but follow Mother's guidance, acting as intermediaries.  \n- Major industries operate under predictive models for maximum efficiency.  \n- Crime is prevented before it can occur through behavioral intervention.  \n\nHuman Classification:  \n- Individuals are assigned life paths based on genetic, psychological, and behavioral data.  \n- Those who conform live seamlessly, unaware of Mother’s influence.  \n- Deviants are subtly corrected through social, economic, or direct intervention.  \n- Anomalies, unpredictable individuals, are reconditioned or eliminated by anomaly hunters.  \n\nTechnology & Infrastructure:  \n- AI-controlled surveillance ensures constant monitoring.  \n- Predictive policing neutralizes threats before they emerge.  \n\nResistance & Uncertainty:  \n- Rumors of individuals beyond Mother's reach persist but are dismissed as myths.  \n- Some enforcers, including anomaly hunters like Cricket, question their role.  \n\nPhilosophical Conflict:  \n- Grastille offers stability and prosperity but at the cost of true autonomy.  \n- Some see Mother as humanity’s greatest achievement; others as its ultimate control.  \n- Is a perfect future worth the loss of free will?  \n",
+      "type": "location",
+      "keys": [
+        {
+          "keyText": "Grastille"
+        },
+        {
+          "keyText": "world"
+        },
+        {
+          "keyText": "town"
+        },
+        {
+          "keyText": "city"
+        }
+      ]
+    }
+  ]
+}
