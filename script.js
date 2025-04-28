@@ -158,6 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const combineBtn = document.getElementById('lorebook-combine-btn');
     // Reference the specific sections for show/hide
     const bulkEnhanceSection = document.querySelector('.bulk-enhance-section');
+    // ADDED: Selective Combine elements
+    const selectiveCombineBtn = document.getElementById('selective-combine-btn');
+    const selectiveCombineModal = document.getElementById('selective-combine-modal');
+    const selectiveCombineModalCloseBtn = document.getElementById('selective-combine-modal-close');
+    const selectiveCombineCancelBtn = document.getElementById('selective-combine-cancel-btn');
+    const selectiveCombineConfirmBtn = document.getElementById('selective-combine-confirm-btn');
+    const selectiveCombineTitle1 = document.getElementById('selective-combine-title-1');
+    const selectiveCombineList1 = document.getElementById('selective-list-1');
+    const selectiveCombineTitle2 = document.getElementById('selective-combine-title-2');
+    const selectiveCombineList2 = document.getElementById('selective-list-2');
 
     // Get references for the output containers
     const LOREBOOK_SAVES_KEY = 'lorebookStudioSaves';
@@ -541,7 +551,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("setMode: Hiding all sections and deactivating buttons.");
         [modeIntroBtn, modeCreatorBtn, modeSingleBtn, modeMultiBtn, modeConverterBtn].forEach(btn => btn?.classList.remove('active'));
         [introInputsDiv, creatorInputsDiv, singleMemoryInputsDiv, multiMemoryInputsDiv, converterInputsDiv].forEach(div => div && (div.style.display = 'none'));
-        [creatorExportBtn, fineTuneBtn, bulkEnhanceSection, combineBtn, converterConvertBtn].forEach(el => el && (el.style.display = 'none'));
+        // ADDED: Hide selective combine button initially
+        [creatorExportBtn, fineTuneBtn, bulkEnhanceSection, combineBtn, selectiveCombineBtn, converterConvertBtn].forEach(el => el && (el.style.display = 'none'));
         [standardOutputSection, creatorOutputSection].forEach(sec => sec && (sec.style.display = 'none'));
 
         // --- Activate the selected mode --- 
@@ -581,6 +592,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if(modeMultiBtn) modeMultiBtn.classList.add('active');
             if(standardOutputSection) standardOutputSection.style.display = 'block'; 
             if (combineBtn) combineBtn.style.display = 'block';
+            // ADDED: Show selective combine button
+            if (selectiveCombineBtn) selectiveCombineBtn.style.display = 'block';
         } else if (mode === 'converter') { 
              console.log("setMode: Activating Converter elements.");
             if(converterInputsDiv) converterInputsDiv.style.display = 'block';
@@ -2149,5 +2162,232 @@ document.addEventListener('DOMContentLoaded', () => {
              saveRecentAutosave(currentData.name, currentData);
          }
     }
+
+    // --- ADDED: Selective Combine Modal Logic ---
+
+    // Function to populate the selective combine modal
+    function populateSelectiveCombineModal(lorebook1, lorebook2) {
+        console.log("Populating selective combine modal...");
+        selectiveCombineTitle1.textContent = `${lorebook1.name || 'Lorebook 1'} Entries`;
+        selectiveCombineTitle2.textContent = `${lorebook2.name || 'Lorebook 2'} Entries`;
+        selectiveCombineList1.innerHTML = ''; // Clear previous entries
+        selectiveCombineList2.innerHTML = '';
+
+        // Populate list 1
+        if (lorebook1.entries && lorebook1.entries.length > 0) {
+            lorebook1.entries.forEach((entry, index) => {
+                const listItem = document.createElement('div');
+                listItem.className = 'selective-entry-item';
+                const checkboxId = `l1-entry-${index}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = checkboxId;
+                checkbox.value = index; // Store original index
+                checkbox.dataset.source = '1'; // Identify source lorebook
+                checkbox.checked = true; // Default to selected
+
+                const label = document.createElement('label');
+                label.htmlFor = checkboxId;
+                label.textContent = entry.name || `(Unnamed Entry ${index + 1})`;
+
+                listItem.appendChild(checkbox);
+                listItem.appendChild(label);
+                selectiveCombineList1.appendChild(listItem);
+            });
+        } else {
+            selectiveCombineList1.innerHTML = '<p><i>(No entries found in this lorebook)</i></p>';
+        }
+
+        // Populate list 2
+        if (lorebook2.entries && lorebook2.entries.length > 0) {
+            lorebook2.entries.forEach((entry, index) => {
+                const listItem = document.createElement('div');
+                listItem.className = 'selective-entry-item';
+                const checkboxId = `l2-entry-${index}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = checkboxId;
+                checkbox.value = index; // Store original index
+                checkbox.dataset.source = '2'; // Identify source lorebook
+                checkbox.checked = true; // Default to selected
+
+                const label = document.createElement('label');
+                label.htmlFor = checkboxId;
+                label.textContent = entry.name || `(Unnamed Entry ${index + 1})`;
+
+                listItem.appendChild(checkbox);
+                listItem.appendChild(label);
+                selectiveCombineList2.appendChild(listItem);
+            });
+        } else {
+            selectiveCombineList2.innerHTML = '<p><i>(No entries found in this lorebook)</i></p>';
+        }
+        console.log("Selective combine modal populated.");
+    }
+
+    // Function to close the selective combine modal
+    function closeSelectiveCombineModal() {
+        if (selectiveCombineModal) {
+            selectiveCombineModal.style.display = 'none';
+            // Clear the stored lorebooks when closing
+            selectiveLorebook1 = null;
+            selectiveLorebook2 = null;
+            console.log("Selective combine modal closed and state cleared.");
+        }
+    }
+
+    // Add listener for the new Selective Combine button
+    if (selectiveCombineBtn) {
+        selectiveCombineBtn.addEventListener('click', () => {
+            console.log("Selective Combine button CLICKED.");
+            outputArea.textContent = ''; // Clear output
+            copyBtn.style.display = 'none';
+            exportBtn.style.display = 'none';
+
+            const file1 = lorebookFile1Input.files[0];
+            const file2 = lorebookFile2Input.files[0];
+            console.log("Selective Combine - Files:", file1, file2);
+
+            if (!file1 || !file2) {
+                showCustomAlert('Please select two lorebook files first.', "Files Required");
+                return;
+            }
+            if (file1.type !== 'application/json' || file2.type !== 'application/json') {
+                showCustomAlert('Please select JSON files only.', "Invalid File Type");
+                return;
+            }
+
+            Promise.all([readFileAsText(file1), readFileAsText(file2)])
+                .then(([content1, content2]) => {
+                    console.log("Selective Combine - Files read successfully.");
+                    try {
+                        selectiveLorebook1 = JSON.parse(content1);
+                        selectiveLorebook2 = JSON.parse(content2);
+
+                        // Basic validation
+                        if (!selectiveLorebook1 || !Array.isArray(selectiveLorebook1.entries)) {
+                             throw new Error("Lorebook 1 is missing 'entries' array or has invalid structure.");
+                        }
+                        if (!selectiveLorebook2 || !Array.isArray(selectiveLorebook2.entries)) {
+                             throw new Error("Lorebook 2 is missing 'entries' array or has invalid structure.");
+                        }
+
+                        console.log("Selective Combine - Lorebooks parsed, populating modal...");
+                        populateSelectiveCombineModal(selectiveLorebook1, selectiveLorebook2);
+                        selectiveCombineModal.style.display = 'block'; // Show the modal
+
+                    } catch (parseError) {
+                         console.error('Error parsing lorebooks (selective combine):', parseError);
+                         showCustomAlert(`Error parsing lorebook files: ${parseError.message}`, "Parse Error");
+                         selectiveLorebook1 = null; // Clear state on error
+                         selectiveLorebook2 = null;
+                    }
+                })
+                .catch(readError => {
+                    console.error('Error reading files (selective combine):', readError);
+                    showCustomAlert('Error reading lorebook files. Check console.', "Read Error");
+                    selectiveLorebook1 = null; // Clear state on error
+                    selectiveLorebook2 = null;
+                });
+        });
+    } else {
+        console.error("Selective Combine button not found!");
+    }
+
+    // Add listeners for modal close and cancel buttons
+    if (selectiveCombineModalCloseBtn) {
+        selectiveCombineModalCloseBtn.addEventListener('click', closeSelectiveCombineModal);
+    }
+    if (selectiveCombineCancelBtn) {
+        selectiveCombineCancelBtn.addEventListener('click', closeSelectiveCombineModal);
+    }
+
+    // Add listener for modal confirm button (logic to be added later)
+    if (selectiveCombineConfirmBtn) {
+        selectiveCombineConfirmBtn.addEventListener('click', () => {
+            console.log("Selective Combine CONFIRM button clicked.");
+            // --- Logic for collecting selected entries and combining will go here ---
+             // showCustomAlert("Combine logic not yet implemented.", "Coming Soon");
+            // closeSelectiveCombineModal(); // Close modal after combining
+            try {
+                if (!selectiveLorebook1 || !selectiveLorebook2) {
+                    throw new Error("Lorebook data is missing. Cannot combine.");
+                }
+
+                const selectedEntries = [];
+
+                // Get selected from List 1
+                selectiveCombineList1.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    const index = parseInt(checkbox.value, 10);
+                    if (!isNaN(index) && selectiveLorebook1.entries[index]) {
+                        selectedEntries.push(JSON.parse(JSON.stringify(selectiveLorebook1.entries[index]))); // Deep copy
+                    }
+                });
+
+                // Get selected from List 2
+                selectiveCombineList2.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    const index = parseInt(checkbox.value, 10);
+                    if (!isNaN(index) && selectiveLorebook2.entries[index]) {
+                        selectedEntries.push(JSON.parse(JSON.stringify(selectiveLorebook2.entries[index]))); // Deep copy
+                    }
+                });
+
+                console.log(`Selective Combine - Total selected entries: ${selectedEntries.length}`);
+
+                if (selectedEntries.length === 0) {
+                     showCustomAlert("No entries were selected. Nothing to combine.", "Combine Warning");
+                     return; // Don't close modal, let user select
+                 }
+
+                // Create the combined lorebook structure
+                const combinedLorebook = {
+                    name: `${selectiveLorebook1.name || 'Lorebook1'} + Selected`, // Use name from first book
+                    thumbnail: selectiveLorebook1.thumbnail || '', // Use thumbnail from first book
+                    entries: selectedEntries
+                };
+
+                // Display the result
+                outputArea.textContent = JSON.stringify(combinedLorebook, null, 2);
+                lastLorebookName = combinedLorebook.name.replace(/[^a-z0-9\s]/gi, '_').replace(/\s+/g, '-').toLowerCase();
+                if (copyBtn) copyBtn.style.display = 'inline-block';
+                if (exportBtn) exportBtn.style.display = 'inline-block';
+
+                // Close the modal
+                closeSelectiveCombineModal();
+
+            } catch (error) {
+                console.error("Error during selective combine confirmation:", error);
+                showCustomAlert(`An error occurred during combination: ${error.message}`, "Combine Error");
+                // Don't close modal on error, user might want to retry or cancel
+            }
+        });
+    }
+
+    // Add listeners for Select/Deselect All buttons
+    document.querySelectorAll('.select-all-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetListId = button.dataset.target === '1' ? 'selective-list-1' : 'selective-list-2';
+            const listContainer = document.getElementById(targetListId);
+            if (listContainer) {
+                listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+            }
+        });
+    });
+
+    document.querySelectorAll('.deselect-all-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetListId = button.dataset.target === '1' ? 'selective-list-1' : 'selective-list-2';
+            const listContainer = document.getElementById(targetListId);
+            if (listContainer) {
+                listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
+        });
+    });
 
 }); 

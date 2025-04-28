@@ -1468,4 +1468,115 @@ textarea::placeholder {
 
 .creator-section-group #creator-export-btn:hover {
      background-color: var(--button-hover-bg);
-} 
+}
+
+/* ADDED: Selective Combine Modal Styles */
+.selective-combine-columns {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    margin-bottom: 20px;
+    max-height: 40vh; /* Limit height and make lists scrollable */
+    overflow-y: hidden; /* Hide main scrollbar, columns will scroll */
+}
+
+.selective-combine-column {
+    flex: 1; /* Each column takes equal space */
+    /* border: 1px solid #ccc; */ /* Replaced with variable */
+    border: 1px solid var(--input-border);
+    padding: 10px;
+    border-radius: 4px;
+    display: flex; /* Use flex column for inner layout */
+    flex-direction: column;
+    background-color: var(--tag-container-bg); /* Match other section backgrounds */
+}
+
+.selective-combine-column h4 {
+    margin-top: 0;
+    /* border-bottom: 1px solid #eee; */ /* Replaced with variable */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--label-color); /* Use label color for consistency */
+}
+
+.selective-controls {
+     display: flex;
+     justify-content: space-around; /* Space out buttons */
+     margin-bottom: 10px;
+     padding-bottom: 10px;
+     /* border-bottom: 1px solid #eee; */ /* Replaced with variable */
+     border-bottom: 1px solid var(--input-border);
+}
+
+.selective-controls button {
+     padding: 5px 10px;
+     font-size: 0.9em;
+     /* Add theme button styles */
+     background-color: var(--button-bg);
+     color: var(--button-text);
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
+}
+
+.selective-controls button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.selective-entry-list {
+    overflow-y: auto; /* Make individual lists scrollable */
+    flex-grow: 1; /* Allow list to take available space */
+    padding-right: 5px; /* Space for scrollbar */
+    /* Add dark theme scrollbar styles */
+    scrollbar-width: thin;
+    scrollbar-color: var(--label-color) var(--tag-container-bg);
+}
+
+/* Webkit scrollbar styles */
+.selective-entry-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.selective-entry-list::-webkit-scrollbar-track {
+    background: var(--tag-container-bg);
+    border-radius: 4px;
+}
+
+.selective-entry-list::-webkit-scrollbar-thumb {
+    background-color: var(--label-color);
+    border-radius: 4px;
+    border: 2px solid var(--tag-container-bg); /* Creates padding around thumb */
+}
+
+.selective-entry-item {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    padding: 2px 0; /* Add slight vertical padding */
+}
+
+.selective-entry-item input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+    /* Basic accent color for checkbox - browser support varies */
+    accent-color: var(--button-bg);
+}
+
+.selective-entry-item label {
+    cursor: pointer;
+    flex-grow: 1; /* Allow label to take space */
+    word-break: break-word; /* Prevent long names overflowing badly */
+    color: var(--text-color); /* Ensure label uses theme text color */
+}
+
+/* Ensure large modal class gives enough width */
+.large-modal {
+     max-width: 800px; /* Adjust as needed */
+     width: 90%; /* Responsive width */
+}
+
+/* --- End Selective Combine Styles --- */
+
+/* Other existing styles follow */ 

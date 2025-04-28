@@ -180,7 +180,9 @@
                      <button id="bulk-enhance-btn">Run Bulk Enhance</button>
                 </div>
                 <button id="lorebook-combine-btn" style="display: none;">Combine Lorebooks</button>
-                 <button id="converter-convert-btn" style="display: none;">Convert to DJ-Lorebook</button>
+                <!-- ADDED: Selective Combine Button -->
+                <button id="selective-combine-btn" style="display: none;">Selective Combine</button> 
+                <button id="converter-convert-btn" style="display: none;">Convert to DJ-Lorebook</button>
             </div>
 
         </div>
@@ -368,6 +370,48 @@
             <div class="modal-actions" style="justify-content: flex-end;">
                 <button id="confirm-modal-cancel-btn" class="modal-button-secondary">Cancel</button>
                 <button id="confirm-modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADDED: Selective Combine Modal -->
+    <div id="selective-combine-modal" class="modal" style="display: none;">
+        <div class="modal-content large-modal"> <!-- Use larger modal class if needed -->
+            <span class="modal-close-btn" id="selective-combine-modal-close">&times;</span>
+            <h3>Select Entries to Combine</h3>
+            <p>Choose the entries you want to include in the final combined lorebook.</p>
+
+            <div class="selective-combine-columns">
+                <!-- Column for Lorebook 1 -->
+                <div class="selective-combine-column">
+                    <h4 id="selective-combine-title-1">Lorebook 1 Entries</h4>
+                     <div class="selective-controls">
+                         <button class="select-all-btn" data-target="1">Select All</button>
+                         <button class="deselect-all-btn" data-target="1">Deselect All</button>
+                     </div>
+                    <div id="selective-list-1" class="selective-entry-list">
+                        <!-- Entries for Lorebook 1 will be populated here -->
+                        <p><i>(Upload Lorebook 1 to see entries)</i></p>
+                    </div>
+                </div>
+
+                <!-- Column for Lorebook 2 -->
+                <div class="selective-combine-column">
+                    <h4 id="selective-combine-title-2">Lorebook 2 Entries</h4>
+                     <div class="selective-controls">
+                         <button class="select-all-btn" data-target="2">Select All</button>
+                         <button class="deselect-all-btn" data-target="2">Deselect All</button>
+                     </div>
+                    <div id="selective-list-2" class="selective-entry-list">
+                        <!-- Entries for Lorebook 2 will be populated here -->
+                        <p><i>(Upload Lorebook 2 to see entries)</i></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions" style="justify-content: flex-end;">
+                <button id="selective-combine-cancel-btn" class="modal-button-secondary">Cancel</button>
+                <button id="selective-combine-confirm-btn">Combine Selected Entries</button>
             </div>
         </div>
     </div>
